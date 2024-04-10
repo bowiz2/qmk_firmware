@@ -1,4 +1,5 @@
 #include "matrix.h"
+#include "rgblight.h"
 #include "quantum.h"
 
 #define COL_SHIFTER ((uint16_t)1)
