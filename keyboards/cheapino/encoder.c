@@ -5,21 +5,28 @@
 
 static bool colABpressed = false;
 static bool encoderPressed = false;
+static uint16_t turns = 0;
+static bool last_turn_clockwise;
 
 void clicked(void) {
     tap_code(KC_MPLY);
 }
 
 void turned(bool clockwise) {
+    if (clockwise != last_turn_clockwise) {
+        // Switched way, reset counter
+        last_turn_clockwise = clockwise;
+        turns = 0;
+    }
+    turns++;
+    if (!(turns%ENCODER_RESOLUTION == 0)) {
+        return;
+    }
+
     if (IS_LAYER_ON(2)) {
         tap_code(clockwise ? KC_BRMU : KC_BRMD);
-//    } else if (IS_LAYER_ON(3)) {
-//        tap_code16(clockwise ? LCTL(KC_TAB) : LCTL(LSFT(KC_TAB)));
-//    } else if (IS_LAYER_ON(5)) {
-//        tap_code(clockwise ? KC_MS_WH_DOWN : KC_MS_WH_UP);
     } else {
         tap_code(clockwise ? KC_VOLU : KC_VOLD);
-        //tap_code16(clockwise ? LGUI(KC_Y) : LGUI(KC_Z));
     }
 }
 

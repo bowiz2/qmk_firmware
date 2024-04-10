@@ -35,3 +35,6 @@
 
 
 #define MAX_DEFERRED_EXECUTORS 32
+
+// How many "tents" should you turn per action
+#define ENCODER_RESOLUTION 1
