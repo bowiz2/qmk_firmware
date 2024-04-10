@@ -11,14 +11,15 @@ void clicked(void) {
 }
 
 void turned(bool clockwise) {
-    if (IS_LAYER_ON(6)) {
-        tap_code(clockwise ? KC_VOLU : KC_VOLD);
-    } else if (IS_LAYER_ON(3)) {
-        tap_code16(clockwise ? LCTL(KC_TAB) : LCTL(LSFT(KC_TAB)));
-    } else if (IS_LAYER_ON(5)) {
-        tap_code(clockwise ? KC_MS_WH_DOWN : KC_MS_WH_UP);
+    if (IS_LAYER_ON(2)) {
+        tap_code(clockwise ? KC_BRMU : KC_BRMD);
+//    } else if (IS_LAYER_ON(3)) {
+//        tap_code16(clockwise ? LCTL(KC_TAB) : LCTL(LSFT(KC_TAB)));
+//    } else if (IS_LAYER_ON(5)) {
+//        tap_code(clockwise ? KC_MS_WH_DOWN : KC_MS_WH_UP);
     } else {
-        tap_code16(clockwise ? LGUI(KC_Y) : LGUI(KC_Z));
+        tap_code(clockwise ? KC_VOLU : KC_VOLD);
+        //tap_code16(clockwise ? LGUI(KC_Y) : LGUI(KC_Z));
     }
 }
 

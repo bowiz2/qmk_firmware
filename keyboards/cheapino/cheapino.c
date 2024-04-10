@@ -1,5 +1,8 @@
+#include "cheapino.h"
+#include <stdbool.h>
 #include "wait.h"
 #include "quantum.h"
+#include "os_detection.h"
 
 // This is to keep state between callbacks, when it is 0 the
 // initial RGB flash is finished
@@ -10,6 +13,18 @@ uint8_t _hue_countdown = 50;
 uint8_t _hue;
 uint8_t _saturation;
 uint8_t _value;
+
+bool mac_mode = false;
+
+uint32_t set_mac_mode(uint32_t next_trigger_time, void *cb_arg) {
+    os_variant_t os = detected_host_os();
+    if (os == OS_MACOS) {
+        mac_mode = true;
+    } else {
+        mac_mode = false;
+    }
+    return 0;
+}
 
 // Do a little 2.5 seconds display of the different colors
 // Use the deferred executor so the LED flash dance does not
@@ -40,6 +55,7 @@ void keyboard_post_init_user(void) {
 
     // Flash a little on start
     defer_exec(50, flash_led, NULL);
+    defer_exec(500, set_mac_mode, NULL);
 }
 
 // Make the builtin RGB led show different colors per layer:
