@@ -4,6 +4,8 @@
 #include "keycodes.h"
 #include "keymap_us.h"
 #include "print.h"
+#include "printf.h"
+#include "progmem.h"
 #include "quantum.h"
 #include "quantum_keycodes.h"
 #include "rgblight.h"
@@ -75,7 +77,7 @@ enum layers {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[CLMK] = LAYOUT_split_3x5_3(
-		KC_Q, KC_W, KC_F, KC_P, KC_B, 		KC_J, KC_L, KC_U, KC_Y, KC_SCLN,
+		KC_Q, KC_W, KC_F, KC_P, KC_B, 		KC_J, KC_L, KC_U, KC_Y, S(KC_SCLN),
 		KC_A, KC_R, KC_S, KC_T, KC_G, 		KC_M, KC_N, KC_E, KC_I, KC_O, 
 		KC_Z, KC_X, KC_C, KC_D, KC_V, 		KC_K, KC_H, KC_COMM, KC_DOT, KC_SLSH, 
 	        KC_SPC, LA_NAV, KC_ESC, 		KC_ENT, LA_SYM, KC_BSPC),
@@ -87,14 +89,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	        KC_SPC, LA_NAV, KC_ESC, 		KC_ENT, LA_SYM, KC_BSPC),
 
 	[NAV] = LAYOUT_split_3x5_3(
-	    SW_WIN, CL_TAB, KC_NO, KC_DEL, CW_TOGG, 			MEH(KC_5), MEH(KC_1), MEH(KC_2), MEH(KC_3), KC_WH_U, 
+	    SW_WIN, CL_TAB, KC_NO, KC_DEL, CW_TOGG, 			MEH(KC_4), MEH(KC_1), MEH(KC_2), MEH(KC_3), KC_WH_U, 
 		OS_CMD, OS_ALT, OS_CTRL, OS_SHFT, LINE_MOD, 		KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_WH_D, 
-		UNDO, CUT, COPY, REDO, PASTE, 	                FIND, KC_TAB, SPTLT, MEH(KC_4), MEH(KC_6),
+		UNDO, CUT, COPY, REDO, PASTE, 	                FIND, KC_TAB, SPTLT, MEH(KC_8), MEH(KC_5),
 							KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
   
 	[SYM] = LAYOUT_split_3x5_3(
-		KC_LCBR,KC_RCBR, KC_LBRC, KC_RBRC,KC_NO, 		KC_NO, KC_PERC, KC_GRAVE, KC_CIRC, KC_NO, 
-		KC_HASH, KC_AMPR, KC_MINS, KC_UNDS, KC_PIPE, 		KC_PLUS, KC_QUOTE, KC_DOUBLE_QUOTE, KC_EQUAL, KC_SCLN, 
+		KC_LCBR,KC_RCBR, KC_LBRC, KC_RBRC,KC_NO, 		KC_NO, KC_PERC, KC_GRAVE, KC_CIRC, KC_SCLN, 
+		KC_HASH, KC_AMPR, KC_MINS, KC_UNDS, KC_PIPE, 		KC_PLUS, KC_QUOTE, KC_DOUBLE_QUOTE, KC_EQUAL, S(KC_SCLN), 
 		KC_DLR, KC_TILD, KC_LPRN, KC_RPRN, KC_AT, 			KC_BSLS, KC_ASTR, KC_LT, KC_GT, KC_EXLM, 
 						KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
 
